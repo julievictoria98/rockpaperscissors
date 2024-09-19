@@ -125,6 +125,12 @@ h1 {
   font-family: 'Luckiest Guy', cursive;
 
 }
+.buttons>:last-child:hover{
+  background-color: red;
+  color: #ffde53;
+ 
+
+}
 
 
 
