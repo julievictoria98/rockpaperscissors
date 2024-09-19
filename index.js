@@ -3,21 +3,31 @@
 let randomNumber = Math.floor(Math.random()*3);
 
 document.addEventListener("DOMContentLoaded", beginGame);
+document.querySelector("#play-again-btn").addEventListener("click", beginGame);
 
 function beginGame(){
+    document.querySelector("#draw").classList.add("hidden");
+    document.querySelector("#win").classList.add("hidden");
+    document.querySelector("#lose").classList.add("hidden");
 
+    shake();
 
  document.querySelector(".rock").addEventListener("click", function(){
- makeMove(0)
+    makeMove(0)
+    shakeStop();
+    
 });
 
 document.querySelector(".paper").addEventListener("click", function(){
-  makeMove(1)   
+    makeMove(1);
+    shakeStop(); 
 
 });
 
 document.querySelector(".scissors").addEventListener("click", function(){
-    makeMove(2)
+    makeMove(2);
+    shakeStop();
+
 });
 }
 
@@ -42,6 +52,7 @@ function makeMove(move){
         document.querySelector("#player1").classList.add("player");
         document.querySelector("#player1").classList.add("scissors");
     }
+
     const computerMove= player2();
 
     checkScore(move, computerMove);
@@ -69,12 +80,31 @@ function player2(){
  
     }
 
+  function shake() {
+    const players = document.querySelectorAll(".player"); 
+    
+    players.forEach(player => {
+        player.classList.add("shake");
+
+        player.addEventListener("animationend", function() {
+            player.classList.remove("shake");
+        });
+    });
+}
+
+function shakeStop(){
+     const players = document.querySelectorAll(".player"); 
+        player.addEventListener("animationend", function() {
+            player.classList.remove("shake");
+        });  
+
+}
+
 function checkScore(move, computerMove){
     console.log("dit træk er :" + move);
     console.log(computerMove)
     if(computerMove == move ){
         document.querySelector("#draw").classList.remove("hidden");
-
     }
 
     else if(move === 1 && computerMove === 0){

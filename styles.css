@@ -48,7 +48,7 @@ h1 {
 .player.shake {
   background-image: url(hand_rock.png);
   transform-origin: left center;
-  animation: shake 1.8s ease-in 1 forwards;
+ animation: shake 1.8s ease-in infinite;
 }
 
 @keyframes shake {
@@ -102,9 +102,31 @@ h1 {
 
 #buttons {
   display: flex;
+  gap:5rem;
   justify-content: space-around;
-  max-width: 50vw;
 }
+
+.buttons{
+  display: flex;
+  flex-direction: column;
+  margin-inline: 10rem;
+  align-items: center;
+  gap:2rem;
+  margin-bottom: 2rem;
+}
+
+.buttons>:last-child{
+  border-radius: 5px;
+  border: 3px solid red;
+  background-color: #ffde53;
+  width:15rem;
+  font-size: xx-large;
+  color: red;
+  font-family: 'Luckiest Guy', cursive;
+
+}
+
+
 
 #buttons.disabled button {
   filter: grayscale(100%) brightness(.75);
